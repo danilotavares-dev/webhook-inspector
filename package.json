@@ -1,0 +1,12 @@
+{
+  "name": "webhook_projeto",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "api",
+    "web"
+  ],
+  "packageManager": "pnpm@10.20.0"
+}
