@@ -1,4 +1,4 @@
-import type { ComponentProps, ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react'
 import { tv, type VariantProps } from 'tailwind-variants'
 
 const iconButton = tv({
@@ -6,7 +6,7 @@ const iconButton = tv({
   variants: {
     size: {
       sm: 'size-6',
-      md: 'size-8'
+      md: 'size-8',
     },
   },
   defaultVariants: {
@@ -14,18 +14,25 @@ const iconButton = tv({
   },
 })
 
-interface IconButtonProps extends ComponentProps<'button'>, VariantProps<typeof iconButton> {
+interface IconButtonProps
+  extends ComponentProps<'button'>,
+    VariantProps<typeof iconButton> {
   icon: ReactNode
 }
 
-export function IconButton({icon, size, className, ...props}: IconButtonProps){
+export function IconButton({
+  icon,
+  size,
+  className,
+  ...props
+}: IconButtonProps) {
   return (
     <button
       type="button"
       className={iconButton({ size, className })}
       {...props}
     >
-        {icon}
+      {icon}
     </button>
   )
 }
