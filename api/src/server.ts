@@ -47,8 +47,9 @@ app.register(deleteWebhook)
 app.register(captureWebhook)
 app.register(generateHandler)
 
-app.listen({ port: 3333, host: '0.0.0.0' }).then(() => {
-  console.log('HTTP server running!')
-  console.log('HTTP server runing on http://localhost:3333')
-  console.log('Docs available at http://localhost:3333/docs')
+const port = Number(process.env.PORT) || 3333
+
+app.listen({
+  port,
+  host: '0.0.0.0',
 })
