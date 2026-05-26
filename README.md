@@ -1,103 +1,105 @@
-# 🎣 Webhook Inspector & Event Processor
+# Webhook Inspector & Event Processor
 
-Este é um projeto **Full-Stack (Monorepo)** gerenciado pelo **pnpm** com workspaces, projetado para receber, inspecionar e processar eventos de webhook.
+[🌍 Read in English](./README.md) | [🇧🇷 Leia em Português](./README-pt.md)
 
-O projeto consiste em duas partes principais:
-1.  **API (`api`):** Backend que recebe, valida e processa os webhooks.
-2.  **Web (`web`):** Frontend de inspeção para visualizar os payloads de webhook em tempo real.
+This is a **Full-Stack (Monorepo)** project managed by **pnpm** with workspaces, designed to receive, inspect, and process webhook events.
 
-## 🌟 Destaques & Funcionalidades
+The project consists of two main parts:
+1.  **API (`api`):** Backend that receives, validates, and processes webhooks.
+2.  **Web (`web`):** Inspection frontend to view webhook payloads in real-time.
 
-* **Arquitetura Monorepo:** Gerenciamento eficiente de código via **pnpm workspaces**.
-* **Serviço de Webhook Inteligente:** Utiliza o Google AI SDK para a função `generate-handler.ts`, permitindo a **geração dinâmica de handlers** para diferentes eventos de webhook.
-* **Backend de Alta Performance:** Construído com **Fastify** para rapidez e robustez.
-* **Validação e Tipagem:** Validação de esquema com **Zod** e tipagem de rotas com `fastify-type-provider-zod`.
-* **Inspeção Visual:** Interface de inspeção (`web`) construída com **React** e **TanStack Router**.
-* **Banco de Dados:** Utiliza **Drizzle ORM** para interagir com o PostgreSQL.
+## Highlights & Features
 
----
-
-## ⚙️ Tecnologias Utilizadas
-
-Este projeto Full-Stack se apoia nas seguintes tecnologias:
-
-### Backend (Workspace `api`)
-
-| Categoria | Tecnologia | Uso Principal |
-| :--- | :--- | :--- |
-| **Framework Web** | **Fastify** | Servidor de alta performance. |
-| **ORM** | **Drizzle ORM** | Mapeamento e Migrações do Banco de Dados. |
-| **Validação** | **Zod** | Validação de payloads e tipagem de rotas. |
-| **AI/Geração** | **@ai-sdk/google** | Geração de código do handler de webhook. |
-
-### Frontend (Workspace `web`)
-
-| Categoria | Tecnologia | Uso Principal |
-| :--- | :--- | :--- |
-| **Framework UI** | **React** | Construção da interface de inspeção. |
-| **Roteamento** | **TanStack Router** | Roteamento do lado do cliente. |
-| **State/Caching** | **TanStack Query** | Gerenciamento de estado assíncrono. |
-| **Estilização** | **Tailwind CSS** | Estilização rápida e utilitária. |
+* **Monorepo Architecture:** Efficient code management via **pnpm workspaces**.
+* **Smart Webhook Service:** Uses the Google AI SDK for the `generate-handler.ts` function, allowing the **dynamic generation of handlers** for different webhook events.
+* **High-Performance Backend:** Built with **Fastify** for speed and robustness.
+* **Validation and Typing:** Schema validation with **Zod** and route typing with `fastify-type-provider-zod`.
+* **Visual Inspection:** Inspection interface (`web`) built with **React** and **TanStack Router**.
+* **Database:** Uses **Drizzle ORM** to interact with PostgreSQL.
 
 ---
 
-## 🚀 Como Começar
+## Technologies Used
 
-### Pré-requisitos
+This Full-Stack project relies on the following technologies:
+
+### Backend (`api` Workspace)
+
+| Category | Technology | Main Use |
+| :--- | :--- | :--- |
+| **Web Framework** | **Fastify** | High-performance server. |
+| **ORM** | **Drizzle ORM** | Database Mapping and Migrations. |
+| **Validation** | **Zod** | Payload validation and route typing. |
+| **AI/Generation** | **@ai-sdk/google** | Webhook handler code generation. |
+
+### Frontend (`web` Workspace)
+
+| Category | Technology | Main Use |
+| :--- | :--- | :--- |
+| **UI Framework** | **React** | Building the inspection interface. |
+| **Routing** | **TanStack Router** | Client-side routing. |
+| **State/Caching** | **TanStack Query** | Asynchronous state management. |
+| **Styling** | **Tailwind CSS** | Fast and utility-first styling. |
+
+---
+
+## Getting Started
+
+### Prerequisites
 
 * **Node.js** (v18+)
-* **pnpm** (Gerenciador de pacotes)
-* **Docker** (Para rodar o PostgreSQL)
+* **pnpm** (Package manager)
+* **Docker** (To run PostgreSQL)
 
-### 1. Instalação & Setup
+### 1. Installation & Setup
 
-1.  **Clone o repositório:**
+1.  **Clone the repository:**
     ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
+    git clone [YOUR_REPOSITORY_URL]
     cd webhook_projeto
     ```
 
-2.  **Instale as dependências:**
+2.  **Install dependencies:**
     ```bash
     pnpm install
     ```
 
-3.  **Configuração do Ambiente:**
-    Crie o arquivo `.env` na pasta `api` e configure a `DATABASE_URL` e a chave de API do Gemini/Google.
+3.  **Environment Configuration:**
+    Create a `.env` file in the `api` folder and configure the `DATABASE_URL` and your Gemini/Google API key.
 
-4.  **Inicialize o Banco de Dados com Docker:**
+4.  **Initialize the Database with Docker:**
     ```bash
     docker-compose up -d postgres
     ```
 
-5.  **Aplique as Migrações do Banco:**
+5.  **Apply Database Migrations:**
     ```bash
     pnpm --filter api db:migrate
-    # Opcional: Popular o banco com dados iniciais (seed)
+    # Optional: Populate the database with initial data (seed)
     # pnpm --filter api db:seed
     ```
 
-### 2. Executando o Projeto
+### 2. Running the Project
 
-Você pode iniciar o Backend e o Frontend simultaneamente ou separadamente:
+You can start the Backend and Frontend simultaneously or separately:
 
 * **Backend (API):**
     ```bash
     pnpm --filter api dev
-    # Rodará o servidor Fastify em desenvolvimento (monitorado por tsx)
+    # Will run the Fastify server in development (monitored by tsx)
     ```
 
 * **Frontend (Web):**
     ```bash
     pnpm --filter web dev
-    # Rodará a interface de inspeção (Vite)
+    # Will run the inspection interface (Vite)
     ```
 
 ---
 
-## 🌐 Endpoints e Acessos
+## 🌐 Endpoints and Access
 
-| Serviço | URL Padrão | Descrição |
+| Service | Default URL | Description |
 | :--- | :--- | :--- |
-| **API Webhooks (POST)** | `http://localhost:5333/api/webhooks` | Endpoint principal para envio de payloads de webhook. |
-| **Web Inspector (GET)** | `http://localhost:5173/` | Interface visual para inspecionar os webhooks recebidos. |
+| **Webhooks API (POST)** | `http://localhost:5333/api/webhooks` | Main endpoint for sending webhook payloads. |
+| **Web Inspector (GET)** | `http://localhost:5173/` | Visual interface to inspect received webhooks. |
