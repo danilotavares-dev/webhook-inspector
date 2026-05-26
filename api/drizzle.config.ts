@@ -7,6 +7,6 @@ export default defineConfig({
     url: env.DATABASE_URL,
   },
   out: './src/db/migrations',
-  schema: './src/db/schema/index.ts',
+  schema: './src/db/schema/index.ts ',
   casing: 'snake_case',
 })
