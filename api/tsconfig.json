@@ -1,25 +1,17 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "_version": "24.0.0",
-
   "compilerOptions": {
-    "lib": [
-      "es2024",
-      "ESNext.Array",
-      "ESNext.Collection",
-      "ESNext.Iterator",
-      "ESNext.Promise"
-    ],
-    "module": "esnext",
-    "target": "esnext",
-
+    "lib": ["es2024"],
+    "module": "commonjs",
+    "target": "es2022",
+    "outDir": "dist",
+    "rootDir": "src",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "bundler",
-
+    "moduleResolution": "node",
     "paths": {
       "@/*": ["./src/*"]
     }
-  }
+  },
+  "include": ["src"]
 }
