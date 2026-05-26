@@ -13,7 +13,7 @@ export function WebhookDetails({ id }: WebhookDetailsProps) {
   const { data } = useSuspenseQuery({
     queryKey: ['webhook', id],
     queryFn: async () => {
-      const response = await fetch(`http://localhost:3333/api/webhooks/${id}`)
+      const response = await fetch(`http://${import.meta.env.VITE_API_URL}/api/webhooks/${id}`)
       const data = await response.json()
 
       return webhooksDataSchema.parse(data)

@@ -21,7 +21,7 @@ export function WebhookList() {
     useSuspenseInfiniteQuery({
       queryKey: ['webhooks'],
       queryFn: async ({ pageParam }) => {
-        const url = new URL('http://localhost:3333/api/webhooks')
+        const url = new URL('http://${import.meta.env.VITE_API_URL}/api/webhooks')
 
         if (pageParam) {
           url.searchParams.set('cursor', pageParam)
@@ -80,7 +80,7 @@ export function WebhookList() {
   }
 
   async function handleGenerateHandler() {
-    const response = await fetch('http://localhost:3333/api/generate', {
+    const response = await fetch('http://${import.meta.env.VITE_API_URL}/api/generate', {
       method: 'POST',
       body: JSON.stringify({ webhookIds: checkedWebhooksIds }),
       headers: {
